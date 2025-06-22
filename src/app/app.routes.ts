@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { Component } from '@angular/core';
+
 import { SplashscreenComponent } from './pages/splashscreen/splashscreen.component';
 import { WalkthroughComponent } from './pages/walkthrough/walkthrough.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -8,22 +10,16 @@ import { NoteComponent } from './pages/note/note.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ArchivedComponent } from './pages/archived/archived.component';
-import { Component } from '@angular/core';
 
 export const routes: Routes = [
     {path: '', component: SplashscreenComponent},
-    {path: '/walkthrough', component: WalkthroughComponent},
-    {path: '/signup', component: SignupComponent},
-    {path: '/login', component :LoginComponent},
-    {path: '/create', component:CreateComponent},
-    {path: '/notes/:id', component:NoteComponent},
-    {path: '/notes/:id', component:NoteComponent},
-    {path: '/notes', component:NotesComponent},
-    {path: '/home', component:HomeComponent},
-    {path: '/archived', component:ArchivedComponent},
-
-
-
-
+    {path: 'walkthrough', component: WalkthroughComponent},
+    {path: 'signup', component: SignupComponent},
+    {path: 'login', component :LoginComponent},
+    {path: 'create', component:CreateComponent},
+    {path: 'notes/:id', component:NoteComponent},
+    {path: 'notes', component:NotesComponent},
+    {path: 'home', component:HomeComponent},
+    {path: 'archived', component:ArchivedComponent}
 
 ];
