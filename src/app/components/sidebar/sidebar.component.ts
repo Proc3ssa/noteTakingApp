@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
+import { RouterEvent, RouterLink } from '@angular/router';
+RouterEvent
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
