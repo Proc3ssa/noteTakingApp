@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-splashscreen',
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class SplashscreenComponent {
 
-  
+  constructor(private readonly router:Router){}
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.router.navigate(['walkthrough']);
+    }, 5000);
+  }
 
 }
