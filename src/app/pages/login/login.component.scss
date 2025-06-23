@@ -1,0 +1,93 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+.signup{
+    
+    margin-top: 50px;
+    width: 100%;
+}
+
+.head{
+    text-align: center;
+
+}
+
+form{
+    max-width: 350px;
+    width: 95%;
+    margin: 50px auto;
+
+    p{
+        font-size: 15px;
+        text-align: center;
+    }
+
+    button{
+        width: 100%;
+        height: 40px;
+        border-radius: 48px;
+        border: none;
+        background-color: $primary-color;
+        color:white;
+        transition: ease-in 0.3s;
+
+        &:hover{
+        box-shadow: 1px 4px 7px gray;
+        width: 100%;
+        height: 41px;
+        font-size: 15px;
+
+    }
+
+    }
+}
+
+.button{
+    margin-top: 25px;
+}
+
+.singleinput{
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    background-color: white;
+    height: 40px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+    margin-block: 25px;
+    transition: ease-in 0.2s;
+
+    &:hover{
+        box-shadow: 1px 3px 8px rgba(128, 128, 128, 0.224);
+        width: 101%;
+
+    }
+
+   
+
+    label{
+        color: gray;
+    }
+
+    input{
+        height: 70%;
+        width: 90%;
+        border: none;
+
+        &:focus{
+            outline: none;
+        }
+    }
+    
+    
+
+}
+
+span{
+        color: $primary-color;
+    }
+
+    
+
