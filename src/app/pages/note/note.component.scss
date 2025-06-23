@@ -1,0 +1,64 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+
+.note{
+    width: 80%;
+    margin-inline: auto;
+
+    h1{
+        text-align: center;
+    }
+
+    .not-body{
+        width: 100%;
+        min-height: fit-content;
+        padding: 20px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 2px solid $primary-color;
+        background-color: white;
+        text-align: justify;
+        box-shadow: 1px 4px 7px rgba(128, 128, 128, 0.375);
+    }
+    p{
+        color: gray
+    }
+
+    span{
+        color: $primary-color;
+        font-weight: bold;
+    }
+
+    .control{
+        @include align-just-space;
+        margin-top: 50px;
+    }
+
+    button{
+        width: 90px;
+        height: 40px;
+        border-radius: 48px;
+        border: none;
+        background-color: $primary-color;
+        color:white;
+        transition: ease-in 0.3s;
+
+        &:hover{
+        box-shadow: 1px 4px 7px gray;
+       
+        height: 41px;
+        font-size: 15px;
+
+    }
+
+
+    }
+
+    .buttons{
+        @include align-just-space;
+        gap:15px
+    }
+}

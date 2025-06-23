@@ -115,6 +115,33 @@
     z-index: 999;
 }
 
+.addNotes{
+    width: 100%;
+    @include align-just-center;
+
+     button{
+        width: 172px;
+        height: 48px;
+        border-radius: 48px;
+        border: none;
+        background-color: $primary-color;
+        color:white;
+        transition: ease-in 0.3s;
+        position: fixed;
+        bottom: 15px;
+        box-shadow: 4px 7px 12px rgba(68, 67, 67, 0.502);
+
+        &:hover{
+        box-shadow: 1px 4px 7px gray;
+        width: 173px;
+        height: 48px;
+        font-size: 15px;
+
+    }
+
+    }
+}
+
 @media (max-width:585px) {
     
     .home{
