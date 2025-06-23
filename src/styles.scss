@@ -2,10 +2,14 @@
 @import './_mixins.scss';
 @import './_base.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
 body{
      max-width: 1440px;
      width: 100%;
      margin-inline: auto;
      background-color: rgb(238, 237, 242);
+     font-family: 'Nunito', sans-serif;
+
 }
 
