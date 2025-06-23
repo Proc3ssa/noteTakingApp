@@ -1,0 +1,32 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+.splashscreen{
+    width: 100%;
+    
+    @include align-just-center;
+
+    animation: splash 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes splash {
+    from{
+
+        margin-top: 500px;
+    }
+
+    to{
+        margin-top: 0;
+    }
+}
+
+.logo{
+
+    margin-top: 200px;
+    
+    span{
+        color: $primary-color;
+    }
+}
+
