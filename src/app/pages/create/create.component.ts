@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CreateComponent {
 
+  date = new Date();
+  day = this.date.toLocaleString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }); 
+
 }

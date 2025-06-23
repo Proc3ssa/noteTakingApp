@@ -4,6 +4,10 @@ import { SpaceComponent } from '../../components/space/space.component';
 import { ɵnoSideEffects } from '@angular/core';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { FoldersComponent } from '../../components/folders/folders.component';
+
+
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
