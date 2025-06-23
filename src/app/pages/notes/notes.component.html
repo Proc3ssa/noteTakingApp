@@ -1,1 +1,90 @@
-<p>notes works!</p>
+<section class="home">
+
+  <div *ngIf="showModal" class="setTheme">
+   <button (click)="closeModalHandler()">close</button>
+  </div>
+      
+    <div class="sidebar">
+        <app-sidebar (openModal)="openModalHandler()"></app-sidebar>
+    </div>
+
+    <div class="main">
+        
+        <header>
+            <h1>Notes</h1>
+
+            <div class="filter-search">
+                <div class="filter">
+                    <label for="">filter by</label>
+                    <select name="" id="">
+                    
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                </select></div>
+                <div class="search">
+                    <input type="search" placeholder="search"> <img src="assets/images/lense.png" alt="lense">
+                </div>
+            </div>
+        </header>
+
+
+        <div class="notes">
+
+            <div class="noteCard">
+
+                <h1>Topic</h1>
+
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
+
+                </div>
+
+                <div class="controls">
+                    <p>type</p>
+                </div>
+
+            </div>
+
+
+             <div class="noteCard">
+
+                <h1>Topic</h1>
+
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
+
+                </div>
+
+                <div class="controls">
+                    <p>type</p>
+                </div>
+
+            </div>
+
+
+
+             <div class="noteCard">
+
+                <h1>Topic</h1>
+
+                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
+
+                </div>
+
+                <div class="controls">
+                    <p>type</p>
+                </div>
+
+            </div>
+
+
+           
+
+        </div>
+
+
+
+
+    </div>
+   
+
+</section>

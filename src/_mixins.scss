@@ -18,3 +18,11 @@
     justify-content: space-between;
 }
 
+@mixin align-just-even{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
