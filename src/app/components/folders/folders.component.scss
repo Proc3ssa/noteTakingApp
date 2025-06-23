@@ -1,0 +1,23 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+
+
+.folders{
+    width: 100%;
+    padding: 10px;
+    display: flex;;
+    flex-wrap: wrap;
+
+    img{
+
+        transition: ease-in 0.3s;
+
+        &:hover{
+        filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
+       
+        }
+    }
+}
+

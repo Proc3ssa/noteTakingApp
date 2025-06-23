@@ -1,0 +1,55 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+.sidebar{
+    background-color: white;
+    height: 90vh;
+    width: 100px;
+    border-radius: 10px;
+    transition: ease-in-out 0.3s;
+    @include align-just-center;
+    flex-direction: column;
+    gap: 60px;
+
+    &:hover{
+        width: 101px;
+        box-shadow: 1px 4px 12px rgba(128, 128, 128, 0.306);
+   
+    }
+
+    button{
+        background-color: $primary-color;
+        border: none;
+        height: 56px;
+        width: 56px;
+        border-radius: 10px;
+        color: white;
+        font-size: 30px;
+
+        &:hover{
+            box-shadow: 1px 3px 7px rgba(128, 128, 128, 0.387);
+        }
+    }
+}
+
+@media (max-width:585px) {
+    
+    .sidebar{
+       width: 98dvh !important;
+       height: 100px !important;
+
+       flex-direction: row;
+       align-content: space-evenly !important;
+    }
+
+    .add{
+    transition: ease-in-out 0.3s;
+
+       
+        &:hover{
+             margin-top: -30px;
+        }
+    }
+   
+}
