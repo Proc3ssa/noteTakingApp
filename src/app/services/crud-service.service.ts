@@ -20,6 +20,12 @@ export class CrudServiceService {
 ;
   }
 
+  addNote(note: Partial<Note>): Observable<Note> {
+  return this.http.post<Note>(`${this.baseUrl}/notes`, note)
+    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+}
+
+
 
    getNote(id: number): Observable<Comment> {
     return this.http.get<Comment>(`${this.baseUrl}/notes/${id}`)

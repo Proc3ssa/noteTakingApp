@@ -36,7 +36,8 @@ export class NoteComponent implements OnInit {
         createdAt: data.createdAt
       } as Note;
 
-      this.note.isArchived ? this.buttonCont = "Remove from Archive" : "Add to archive"
+      console.log(this.note.isArchived);
+      this.buttonCont = this.note.isArchived ? "Remove from Archive" : "Add to archive";
     },
     error: (err) => {
       console.log("ERROR ME" + err)

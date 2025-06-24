@@ -1,12 +1,12 @@
 <section class="create">
     <h1>Add new note</h1>
     <p>{{day}}</p>
-    <form action="" (submit)="submit()">
+    <form action=""  #noteForm="ngForm" (submit)="submit()">
 
          <div class="tags">
           <label for="">Select tag</label>
 
-          <select name="" id="" [(ngModel)] = "tag" required>
+          <select name="tag" id="" [(ngModel)] = "tag" required>
             <option value="All">All</option>
             <option value="Arcchived">Archive</option>
             <option value="Academic">Academic</option>
@@ -14,10 +14,13 @@
 
           </select>
         </div>
+        <div class="error" *ngIf="noteForm.submitted && noteForm.controls['title']?.invalid">
+      Title is required.
+    </div>
          <div class="singleinput">
            <label for="">title</label>
          
-           <input type="text" name="" id="" [(ngModel)]="title">
+           <input type="text" name="title" id="" [(ngModel)]="title">
         </div>
 
      
@@ -25,8 +28,11 @@
          <div class="singleinput">
            <label for="">body</label>
           
-          <textarea name="" id=""></textarea>
+          <textarea name="content" id="body" [(ngModel)] = "content"></textarea>
         </div>
+        <div class="error" *ngIf="noteForm.submitted && noteForm.controls['body']?.invalid">
+      Body is required.
+    </div>
 
 
         <div class="button">

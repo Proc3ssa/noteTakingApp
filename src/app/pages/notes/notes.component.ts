@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { Note } from '../../models/note';
 import { CrudServiceService } from '../../services/crud-service.service';
 import { NotecardComponent } from '../../components/notecard/notecard.component';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-notes',
-  imports: [SidebarComponent, CommonModule, NotecardComponent],
+  imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })

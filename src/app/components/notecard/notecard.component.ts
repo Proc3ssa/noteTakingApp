@@ -14,15 +14,17 @@ export class NotecardComponent implements OnChanges{
   @Input() note!: Note;
 
 
-  id = 0;
+  id = '';
   title = '';
   body = '';
+  tag = ''
 
    ngOnChanges(changes: SimpleChanges) {
     if (changes['note'] && this.note) {
       this.id = this.note.id;
       this.title = this.note.title;
       this.body = this.note.content.slice(0,40) + "...";
+      this.tag = this.note.tag;
     }
   }
 
