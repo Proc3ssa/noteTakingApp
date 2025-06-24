@@ -29,21 +29,15 @@
         </header>
 
 
-        <div *ngFor="let note of notes" class="notes">
+        <div class="notes">
 
-            <div *ngFor="let note of notes" class="noteCard">
+          
 
-                <h1>Topic</h1>
+            <app-notecard *ngFor="let note of notes" [note]="note">
+              
+            </app-notecard>
 
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
+            
 
 
            

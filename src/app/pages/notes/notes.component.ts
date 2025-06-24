@@ -3,9 +3,10 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { Note } from '../../models/note';
 import { CrudServiceService } from '../../services/crud-service.service';
+import { NotecardComponent } from '../../components/notecard/notecard.component';
 @Component({
   selector: 'app-notes',
-  imports: [SidebarComponent, CommonModule],
+  imports: [SidebarComponent, CommonModule, NotecardComponent],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
