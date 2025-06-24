@@ -1,6 +1,6 @@
 <section class="home">
 
-  <div *ngIf="showModal" class="setTheme">
+  <div  class="setTheme">
    <button (click)="closeModalHandler()">close</button>
   </div>
       
@@ -9,7 +9,7 @@
     </div>
 
     <div class="main">
-        
+        <p *ngIf="error">error loading {{error}}</p>
         <header>
             <h1>Notes</h1>
 
@@ -29,24 +29,9 @@
         </header>
 
 
-        <div class="notes">
+        <div *ngFor="let note of notes" class="notes">
 
-            <div class="noteCard">
-
-                <h1>Topic</h1>
-
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
-
-
-             <div class="noteCard">
+            <div *ngFor="let note of notes" class="noteCard">
 
                 <h1>Topic</h1>
 
@@ -61,20 +46,10 @@
             </div>
 
 
+           
 
-             <div class="noteCard">
 
-                <h1>Topic</h1>
-
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
+            
 
 
            
