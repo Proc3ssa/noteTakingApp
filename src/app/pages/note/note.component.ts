@@ -24,7 +24,6 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
       
   const id = Number(this.route.snapshot.paramMap.get('id'));
-  // buttonCont is now declared as a class property above
   
 
   this.crudservice.getNote(id).subscribe({

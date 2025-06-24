@@ -1,16 +1,30 @@
 <section class="create">
     <h1>Add new note</h1>
     <p>{{day}}</p>
-    <form action="">
+    <form action="" (submit)="submit()">
+
+         <div class="tags">
+          <label for="">Select tag</label>
+
+          <select name="" id="" [(ngModel)] = "tag" required>
+            <option value="All">All</option>
+            <option value="Arcchived">Archive</option>
+            <option value="Academic">Academic</option>
+            <option value="Work">Work</option>
+
+          </select>
+        </div>
          <div class="singleinput">
            <label for="">title</label>
          
-           <input type="text" name="" id="">
+           <input type="text" name="" id="" [(ngModel)]="title">
         </div>
+
+     
 
          <div class="singleinput">
            <label for="">body</label>
-         
+          
           <textarea name="" id=""></textarea>
         </div>
 

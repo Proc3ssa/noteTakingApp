@@ -35,6 +35,13 @@
     .control{
         @include align-just-space;
         margin-top: 50px;
+        flex-wrap: wrap;
+
+        .buttons{
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
     }
 
     button{

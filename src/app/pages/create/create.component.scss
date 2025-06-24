@@ -96,5 +96,9 @@ span{
         color: $primary-color;
     }
 
+
+    .tags{
+        @include align-just-even
+    }
     
 
