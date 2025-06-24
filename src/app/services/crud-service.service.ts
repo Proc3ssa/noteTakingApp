@@ -21,8 +21,8 @@ export class CrudServiceService {
   }
 
 
-   getPost(id: number): Observable<Comment> {
-    return this.http.get<Comment>(`${this.baseUrl}/posts/${id}`)
+   getNote(id: number): Observable<Comment> {
+    return this.http.get<Comment>(`${this.baseUrl}/notes/${id}`)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
