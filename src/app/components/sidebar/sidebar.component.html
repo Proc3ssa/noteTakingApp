@@ -1,10 +1,10 @@
 <div class="sidebar">
 
-    <div>
+    <div routerLink="/notes" title="notes">
         <img src="assets/images/book.png" alt="">
     </div>
 
-    <div>
+    <div routerLink="/archived" title="archive">
         <img src="assets/images/todo.png" alt="">
     </div>
 
@@ -19,7 +19,7 @@
         <img src="assets/images/light.png" alt="">
     </div>
 
-    <div (click)="notifyParent()">
+    <div (click)="notifyParent()" title="settings">
         <img src="assets/images/settings.png" alt="">
     </div>
 

@@ -46,8 +46,21 @@ export class NoteComponent implements OnInit {
      
   }
 
-  deleteNote(): void {
-  if (confirm('Are you sure you want to delete this note?')) {
+ toggleArchive(): void {
+   this.note.isArchived = !this.note.isArchived;
+   this.crudservice.updateNote(this.note.id, this.note).subscribe({
+     next: () => {
+       this.ngOnInit();
+     },
+     error: (err) => {
+       console.error('Update failed:', err);
+       alert('Failed to update note.');
+     }
+   });
+ }
+
+ deleteNote(): void {
+ if (confirm('Are you sure you want to delete this note?')) {
     this.crudservice.deleteNote(this.note.id).subscribe({
       next: () => {
         alert('Note deleted successfully.');
