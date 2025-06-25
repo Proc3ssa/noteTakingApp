@@ -44,10 +44,13 @@ export class EditComponent implements OnInit {
 
     this.crudservice.updateNote(this.data.id, this.data).subscribe({
       next: (updatedNote) => {
+        alert("edited")
         console.log('Updated:', updatedNote);
         this.router.navigate(['/notes', this.data.id]);
       },
-      error: (err) => console.error('Update failed:', err)
+      error: (err) => {
+        alert("could not edit")
+        console.error('Update failed:', err)}
     });
   }
 }
