@@ -13,10 +13,13 @@ switch ($uri[1]) {
         break;
 
     case 'users':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            require 'users/register.php';
-        }
-        break;
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        require 'users/get.php'; // ✅ Add this
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require 'users/register.php';
+    }
+    break;
+
 
     default:
         http_response_code(404);
