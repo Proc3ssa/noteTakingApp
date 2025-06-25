@@ -1,18 +1,18 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Note } from '../../models/note';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-notecard',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink, CommonModule],
   templateUrl: './notecard.component.html',
-  styleUrl: './notecard.component.scss'
+  styleUrls: ['./notecard.component.scss']
 })
-
-export class NotecardComponent implements OnChanges{
+export class NotecardComponent implements OnChanges {
 
   @Input() note!: Note;
-
 
   id = 0;
   title = '';
@@ -27,5 +27,4 @@ export class NotecardComponent implements OnChanges{
       this.tag = this.note.tag;
     }
   }
-
 }

@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
 import { FilterPipe } from '../../pipes/filter.pipe';
 @Component({
   selector: 'app-notes',
-  imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink, FilterPipe],
+  imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink, FilterPipe ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
