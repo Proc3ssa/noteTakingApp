@@ -5,9 +5,10 @@ import { Note } from '../../models/note';
 import { CrudServiceService } from '../../services/crud-service.service';
 import { NotecardComponent } from '../../components/notecard/notecard.component';
 import { RouterLink } from '@angular/router';
+import { FilterPipe } from '../../pipes/filter.pipe';
 @Component({
   selector: 'app-notes',
-  imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink],
+  imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink, FilterPipe],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
@@ -23,10 +24,10 @@ export class NotesComponent implements OnInit{
 
    notes: Note[] = []
    selectedCategory: string = 'All';
+   searchTerm: string = '';
 
-
-  loadNotes(tag: string = 'All'): void {
-    this.crudservice.getNotes(tag).subscribe({
+  loadNotes(tag: string = 'All', searchTerm: string = ''): void {
+    this.crudservice.getNotes(tag, searchTerm).subscribe({
       next: (notes: Note[]) => {
         this.notes = notes;
       },
@@ -55,6 +56,11 @@ export class NotesComponent implements OnInit{
 
   onCategoryChange(event: Event) {
     this.filterNotes((event.target as HTMLSelectElement).value);
+  }
+
+  searchNotes(event: Event) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    this.loadNotes(this.selectedCategory, this.searchTerm);
   }
 
 }

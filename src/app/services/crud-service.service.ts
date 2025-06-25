@@ -14,10 +14,17 @@ export class CrudServiceService {
 
   constructor(private http: HttpClient, private errorHandler: ErrorService) {}
 
- getNotes(tag: string = 'All'): Observable<Note[]> {
+ getNotes(tag: string = 'All', searchTerm: string = ''): Observable<Note[]> {
     let url = `${this.baseUrl}/notes`;
+    let params = new URLSearchParams();
     if (tag !== 'All') {
-      url += `?tag=${tag}`;
+      params.set('tag', tag);
+    }
+    if (searchTerm !== '') {
+      params.set('searchTerm', searchTerm);
+    }
+    if (params.toString()) {
+      url += `?${params.toString()}`;
     }
     return this.http.get<Note[]>(url)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
