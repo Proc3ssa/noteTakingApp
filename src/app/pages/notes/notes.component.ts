@@ -21,11 +21,12 @@ export class NotesComponent implements OnInit{
 
   error = false;
 
-   notes: Note[] = [] 
+   notes: Note[] = []
+   selectedCategory: string = 'All';
 
 
-  loadNotes(): void {
-    this.crudservice.getNotes().subscribe({
+  loadNotes(tag: string = 'All'): void {
+    this.crudservice.getNotes(tag).subscribe({
       next: (notes: Note[]) => {
         this.notes = notes;
       },
@@ -45,6 +46,15 @@ export class NotesComponent implements OnInit{
 
   closeModalHandler(){
     this.showModal = false;
+  }
+
+ filterNotes(tag: string) {
+    this.selectedCategory = tag;
+    this.loadNotes(tag);
+  }
+
+  onCategoryChange(event: Event) {
+    this.filterNotes((event.target as HTMLSelectElement).value);
   }
 
 }

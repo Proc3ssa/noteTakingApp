@@ -16,11 +16,13 @@
             <div class="filter-search">
                 <div class="filter">
                     <label for="">filter by</label>
-                    <select name="" id="">
-                    
-                    <option value="">All</option>
-                    <option value="">Academic</option>
-                    <option value="">Work</option>
+                    <select name="" id="" (change)="onCategoryChange($event)">
+
+                    <option value="All">All</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Work">Work</option>
+                    <option value="Others">Others</option>
+
                 </select></div>
                 <div class="search">
                     <input type="search" placeholder="search"> <img src="assets/images/lense.png" alt="lense">

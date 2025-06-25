@@ -14,8 +14,12 @@ export class CrudServiceService {
 
   constructor(private http: HttpClient, private errorHandler: ErrorService) {}
 
-  getNotes(): Observable<Note[]> {
-    return this.http.get<Note[]>(`${this.baseUrl}/notes`)
+ getNotes(tag: string = 'All'): Observable<Note[]> {
+    let url = `${this.baseUrl}/notes`;
+    if (tag !== 'All') {
+      url += `?tag=${tag}`;
+    }
+    return this.http.get<Note[]>(url)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }
