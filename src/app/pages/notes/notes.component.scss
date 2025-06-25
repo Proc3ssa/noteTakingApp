@@ -188,6 +188,7 @@
   width: 50%;
   max-width: 600px;
   position: relative;
+  color: black;
 }
 
 .close {
@@ -200,8 +201,9 @@
 
 
 .buttons{
-    width: fit-content;
+    width: 100%;
     @include align-just-space;
+    flex-wrap: wrap;
 
     
 }

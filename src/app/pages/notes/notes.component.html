@@ -70,10 +70,11 @@
     <h3>Theme Change</h3>
 
     <div class="buttons">
-      <button>Light</button><button style="background-color: rgb(44, 44, 44); color:white">Dark</button>
+      <button (click)="themeChange('light')">Light</button>
+      <button (click)="themeChange('dark')" style="background-color: rgb(44, 44, 44); color:white">Dark</button>
        
       <label for="color">Custom</label>
-      <input type="color" name="" id="color">
+      <input type="color" name="" id="color" (input)="onCustomColorChange($event)">
     </div>
 
 
