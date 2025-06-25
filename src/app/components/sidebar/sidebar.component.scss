@@ -3,7 +3,7 @@
 @import '../../../_base.scss';
 
 .sidebar{
-    background-color: white;
+    background-color: var(--card-bg);
     height: 90vh;
     width: 100px;
     border-radius: 10px;

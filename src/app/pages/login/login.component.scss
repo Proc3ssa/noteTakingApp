@@ -47,6 +47,15 @@ form{
     margin-top: 25px;
 }
 
+.logo{
+    @include align-just-center;
+
+    img{
+        width: 50px;
+        height: 50px;
+    }
+}
+
 .singleinput{
     width: 100%;
     border-radius: 5px;

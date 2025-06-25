@@ -60,4 +60,8 @@ export class CrudServiceService {
 ;
   }
   
+  signIn(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users`, { email, password })
+      .pipe(retry(1), catchError((error) => this.errorHandler.handle(error)));
+  }
 }
