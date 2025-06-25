@@ -197,3 +197,24 @@
   padding: 10px;
   cursor: pointer;
 }
+
+
+.buttons{
+    width: fit-content;
+    @include align-just-space;
+
+    
+}
+
+button , input{
+        width: 100px;
+        height: 30px;
+        border-radius: 6px;
+        border: none;
+        margin: 5px;
+        transition: ease 0.3s;
+
+        &:hover{
+            box-shadow: 2px 4px 7px rgba(128, 128, 128, 0.584);
+        }
+    }
