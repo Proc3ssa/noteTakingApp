@@ -38,8 +38,8 @@ export class NotesComponent implements OnInit{
     });
   }
 
+  showModal = false;
 
-  showModal = true;
 
   openModalHandler(){
     this.showModal = true;

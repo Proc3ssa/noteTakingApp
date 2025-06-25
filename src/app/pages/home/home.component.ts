@@ -16,5 +16,13 @@ import { FoldersComponent } from '../../components/folders/folders.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  showModal = false;
 
+  openModalHandler(){
+    this.showModal = true;
+  }
+
+  closeModalHandler(){
+    this.showModal = false;
+  }
 }
