@@ -43,8 +43,8 @@ export class CrudServiceService {
     .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
 }
 
-  deletePost(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/posts/${id}`)
+  deleteNote(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/notes/${id}`)
       .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
 ;
   }

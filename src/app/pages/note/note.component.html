@@ -9,7 +9,7 @@
         <div class="buttons">
         <button [routerLink]="['/edit', note.id]">Edit</button>
         <button style="background-color: gray; color:white">{{buttonCont}}</button>
-        <button style="background-color: red; color:white">Delete</button>
+        <button (click)="deleteNote()" style="background-color: red; color:white">Delete</button>
 
 
         </div>

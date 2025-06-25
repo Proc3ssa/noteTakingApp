@@ -46,6 +46,22 @@ export class NoteComponent implements OnInit {
      
   }
 
+  deleteNote(): void {
+  if (confirm('Are you sure you want to delete this note?')) {
+    this.crudservice.deleteNote(this.note.id).subscribe({
+      next: () => {
+        alert('Note deleted successfully.');
+        this.router.navigate(['/notes']); // change this to your desired redirect
+      },
+      error: (err) => {
+        console.error('Delete failed:', err);
+        alert('Failed to delete note.');
+      }
+    });
+  }
+}
+
+
 
 
 }
