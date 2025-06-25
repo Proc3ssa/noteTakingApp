@@ -27,11 +27,10 @@ export class CrudServiceService {
 
 
 
-   getNote(id: number): Observable<Comment> {
-    return this.http.get<Comment>(`${this.baseUrl}/notes/${id}`)
-      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
-;
-  }
+  getNote(id: number): Observable<Note> {
+  return this.http.get<Note>(`${this.baseUrl}/notes/${id}`)
+    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+}
 
   createPost(post: Partial<Comment>): Observable<Comment> {
     return this.http.post<Comment>(`${this.baseUrl}/posts`, post)
@@ -39,11 +38,10 @@ export class CrudServiceService {
 ;
   }
 
-  updatePost(id: number, post: Partial<Comment>): Observable<Comment> {
-    return this.http.put<Comment>(`${this.baseUrl}/posts/${id}`, post)
-      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
-;
-  }
+  updateNote(id: number, post: Partial<Note>): Observable<Note> {
+  return this.http.put<Note>(`${this.baseUrl}/notes/${id}`, post)
+    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+}
 
   deletePost(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/posts/${id}`)

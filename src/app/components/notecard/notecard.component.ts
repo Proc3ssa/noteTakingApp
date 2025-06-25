@@ -14,7 +14,7 @@ export class NotecardComponent implements OnChanges{
   @Input() note!: Note;
 
 
-  id = '';
+  id = 0;
   title = '';
   body = '';
   tag = ''

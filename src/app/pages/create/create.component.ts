@@ -12,13 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class CreateComponent {
 
-  id = Math.floor(Math.random() * 1000000).toString();
+  id = Math.floor(Math.random() * 1000000);
 
   date = new Date();
   day = this.date.toLocaleString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }); 
 
   data: Note = {
-    id: this.id,
+    id: 0,
     title: '',
     content: '',
     tag: '',

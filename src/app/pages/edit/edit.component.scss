@@ -1,0 +1,104 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+.create{
+    
+   p{
+    color:$primary-color
+   }
+
+}
+
+h1, p{
+    text-align: center;
+
+}
+
+form{
+    max-width: 600px;
+    width: 95%;
+    margin: 50px auto;
+
+   
+    button{
+        width: 100%;
+        height: 40px;
+        border-radius: 48px;
+        border: none;
+        background-color: $primary-color;
+        color:white;
+        transition: ease-in 0.3s;
+
+        &:hover{
+        box-shadow: 1px 4px 7px gray;
+        width: 100%;
+        height: 41px;
+        font-size: 15px;
+
+    }
+
+    }
+}
+
+.button{
+    margin-top: 25px;
+}
+
+textarea{
+    height: 300px;
+    border: none;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.singleinput{
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    background-color: white;
+    height: fit-content;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+    margin-block: 25px;
+    transition: ease-in 0.2s;
+
+    &:hover{
+        box-shadow: 1px 3px 8px rgba(128, 128, 128, 0.224);
+        width: 101%;
+
+    }
+
+   
+
+    label{
+        color: gray;
+    }
+
+    input{
+        height: 70%;
+        width: 100%;
+        border: none;
+
+        &:focus{
+            outline: none;
+        }
+    }
+    
+    
+
+}
+
+span{
+        color: $primary-color;
+    }
+
+
+    .tags{
+        @include align-just-even
+    }
+    
+

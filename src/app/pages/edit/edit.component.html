@@ -1,0 +1,42 @@
+<section class="create">
+    <h1>Edit note</h1>
+    
+    <form action=""  #noteForm="ngForm" (submit)="submit()">
+
+         <div class="tags">
+          <label for="">Select tag</label>
+
+          <select name="tag" id="" [(ngModel)] = "data.tag" required>
+            <option value="All">All</option>
+            <option value="Arcchived">Archive</option>
+            <option value="Academic">Academic</option>
+            <option value="Work">Work</option>
+
+          </select>
+        </div>
+        <div class="error" *ngIf="noteForm.submitted && noteForm.controls['title']?.invalid">
+      Title is required.
+    </div>
+         <div class="singleinput">
+           <label for="">title</label>
+         
+           <input type="text" name="title" id="" [(ngModel)]="data.title">
+        </div>
+
+     
+
+         <div class="singleinput">
+           <label for="">body</label>
+          
+          <textarea name="content" id="body" [(ngModel)] = "data.content"></textarea>
+        </div>
+        <div class="error" *ngIf="noteForm.submitted && noteForm.controls['body']?.invalid">
+      Body is required.
+    </div>
+
+
+        <div class="button">
+            <button>Save</button>
+        </div>
+    </form>
+</section>

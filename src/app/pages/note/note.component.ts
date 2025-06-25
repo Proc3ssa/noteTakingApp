@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { Note } from '../../models/note';
 import { CrudServiceService } from '../../services/crud-service.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-note',
-  imports: [SidebarComponent],
+  imports: [SidebarComponent, RouterLink],
   templateUrl: './note.component.html',
   styleUrl: './note.component.scss'
 })
