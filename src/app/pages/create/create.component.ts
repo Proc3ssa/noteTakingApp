@@ -4,9 +4,10 @@ import { Note } from '../../models/note';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-create',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss'
 })
@@ -30,9 +31,11 @@ export class CreateComponent {
   content: string = '';
   tag: string = '';
 
-  constructor(private crudservice : CrudServiceService,
-    
-  ){}
+  constructor(private crudservice: CrudServiceService, private router: Router) {}
+
+  cancel() {
+    this.router.navigate(['/notes']);
+  }
 
   
 
@@ -61,4 +64,6 @@ export class CreateComponent {
 
 
 }
+ 
+
 }

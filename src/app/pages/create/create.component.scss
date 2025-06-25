@@ -22,7 +22,8 @@ form{
 
    
     button{
-        width: 100%;
+        
+        width: 40%;
         height: 40px;
         border-radius: 48px;
         border: none;
@@ -43,6 +44,7 @@ form{
 
 .button{
     margin-top: 25px;
+    @include align-just-even
 }
 
 textarea{
