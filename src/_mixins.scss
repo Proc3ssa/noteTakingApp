@@ -1,0 +1,28 @@
+// Define mixins here
+@mixin rounded-corners($radius: 5px) {
+  border-radius: $radius;
+}
+
+@mixin align-just-center{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@mixin align-just-space{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin align-just-even{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+

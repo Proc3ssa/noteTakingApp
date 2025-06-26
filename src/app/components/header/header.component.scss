@@ -1,0 +1,30 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+
+header{
+    padding: 10px;
+    @include align-just-space;
+
+    .head-name{
+        line-height: 20px;
+
+        b{
+            color: gray;
+        }
+
+        h2{
+            font-weight: bolder
+        }
+    }
+
+    .profile-notification{
+        @include align-just-space;
+        gap: 15px;
+
+        img{
+            border-radius: 10px;
+        }
+    }
+}

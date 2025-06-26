@@ -1,0 +1,30 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+
+
+.availablespace{
+    @include align-just-space;
+    margin-inline: auto;
+    background-color: $primary-color;
+    padding: 40px;
+    border-radius: 30px;
+    transition: ease-in-out 0.3s;
+
+    &:hover{
+        box-shadow: 1px 4px 7px gray;
+    }
+
+    h3{
+        color: white;
+    }
+
+    p{
+        color: rgb(198, 210, 223);
+    }
+
+
+
+}
+

@@ -1,0 +1,55 @@
+@import '../../../_variables';
+@import '../../../_mixins.scss';
+@import '../../../_base.scss';
+
+.walkthrough{
+    width: 100%;
+    height: 100dvh;
+    margin-top: 15px;
+
+    @include align-just-center;
+    flex-direction: column;
+
+    span{
+        color: $primary-color;
+
+    }
+}
+
+.share{
+    margin-top: 70px;
+    font-size:xx-large;
+}
+
+.createAccountbutton{
+    margin-top: 70px;
+    @include align-just-center;
+    width:100%;
+
+   
+    button{
+        width: 172px;
+        height: 48px;
+        border-radius: 48px;
+        border: none;
+        background-color: $primary-color;
+        color:white;
+        transition: ease-in 0.3s;
+
+        &:hover{
+        box-shadow: 1px 4px 7px gray;
+        width: 173px;
+        height: 48px;
+        font-size: 15px;
+
+    }
+
+    }
+}
+
+.haveAnaccount{
+    margin-top: 20px;
+}
+
+
+
