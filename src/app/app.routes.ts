@@ -11,6 +11,7 @@ import { NotesComponent } from './pages/notes/notes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ArchivedComponent } from './pages/archived/archived.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path: '', component: SplashscreenComponent},
@@ -18,10 +19,10 @@ export const routes: Routes = [
     {path: 'signup', component: SignupComponent},
     {path: 'login', component :LoginComponent},
     {path: 'create', component:CreateComponent},
-    {path: 'notes/:id', component:NoteComponent},
-    {path: 'edit/:id', component:EditComponent},
-    {path: 'notes', component:NotesComponent},
+    {path: 'notes/:id', component:NoteComponent, canActivate: [AuthGuard]},
+    {path: 'edit/:id', component:EditComponent, canActivate: [AuthGuard]},
+    {path: 'notes', component:NotesComponent, canActivate: [AuthGuard]},
     {path: 'home', component:HomeComponent},
-    {path: 'archived', component:ArchivedComponent}
+    {path: 'archived', component:ArchivedComponent, canActivate: [AuthGuard]}
 
 ];

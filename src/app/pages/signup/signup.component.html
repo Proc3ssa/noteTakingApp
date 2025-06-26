@@ -1,39 +1,35 @@
 <section class="signup">
+  <p class="head">Sign up</p>
 
-    <p class="head">Sign up</p>
+  <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
 
-    <form action="">
+    <div class="singleinput">
+      <label for="username">User name</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" required />
+    </div>
 
-        <div class="singleinput">
-           <label for="">User name</label>
-         
-           <input type="text" name="" id="">
-        </div>
+    <div class="singleinput">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" required />
+    </div>
 
+    <div class="singleinput">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" required />
+    </div>
 
-        <div class="singleinput">
-           <label for="">Email</label>
-         
-           <input type="email" name="" id="">
-        </div>
+    <div class="singleinput">
+      <label for="confirmPassword">Confirm password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required />
+    </div>
 
-        <div class="singleinput">
-           <label for="">Password</label>
-         
-           <input type="password" name="" id="">
-        </div>
+    <p>By continuing you agree to our <span>Terms of services</span> and <span>Privacy Policy</span></p>
 
-        <div class="singleinput">
-           <label for="">Confirm password</label>
-         
-           <input type="password" name="" id="">
-        </div>
+    <div class="button">
+      <button type="submit">Sign Up</button>
+    </div>
 
-        <p>By continuing you agree to out <span>Terms of services</span> and <span>Privacy Policy</span></p>
-
-        <div class="button">
-            <button>Sign Up</button>
-        </div>
-    </form>
-
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  </form>
 </section>

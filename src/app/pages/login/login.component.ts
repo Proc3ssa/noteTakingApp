@@ -30,26 +30,28 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.errorMessage = '';
-    if (this.loginForm.valid) {
-      const email = this.loginForm.value.email;
-      const password = this.loginForm.value.password;
+  this.errorMessage = '';
 
-      this.crudService.signIn(email, password).subscribe({
-        next: (response: any) => {
-          // Store the token
-          localStorage.setItem('token', response.token);
-          // Navigate to home
-          this.router.navigate(['/home']);
-        },
-        error: (error: any) => {
-          // Navigate to home
-          this.router.navigate(['/home']);
-        }
-      });
-    } else {
-      this.errorMessage = 'Please fill out the form';
-      console.log(this.errorMessage);
-    }
+  if (this.loginForm.valid) {
+    const { email, password } = this.loginForm.value;
+
+    this.crudService.signIn(email, password).subscribe({
+    next: (response: any) => {
+  if (response.token) {
+    localStorage.setItem('token', response.token);
+    this.router.navigate(['/notes']);
+  } else {
+    this.errorMessage = 'Invalid server response.';
   }
+},
+
+      error: (err: any) => {
+        this.errorMessage = err?.error?.error || 'Login failed. Please try again.';
+      }
+    });
+  } else {
+    this.errorMessage = 'Please fill out the form';
+  }
+}
+
 }
