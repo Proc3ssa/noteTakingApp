@@ -31,6 +31,7 @@ export class NotesComponent implements OnInit{
   error = false;
 
    notes: Note[] = []
+filteredNotes: Note[] = [];
    selectedCategory: string = 'All';
    searchTerm: string = '';
 
@@ -38,6 +39,7 @@ export class NotesComponent implements OnInit{
     this.crudservice.getNotes(tag, searchTerm).subscribe({
       next: (notes: Note[]) => {
         this.notes = notes;
+        this.filteredNotes = notes;
       },
       error: (err) => {
         this.error = true;
@@ -62,6 +64,8 @@ export class NotesComponent implements OnInit{
     this.loadNotes(tag);
   }
 
+  
+
   onCategoryChange(event: Event) {
     this.filterNotes((event.target as HTMLSelectElement).value);
   }
@@ -70,6 +74,7 @@ export class NotesComponent implements OnInit{
     this.searchTerm = (event.target as HTMLInputElement).value;
     this.loadNotes(this.selectedCategory, this.searchTerm);
   }
+
 
 theme = 'light';
 customBgColor = '#ffffff';
