@@ -18,11 +18,11 @@ export const routes: Routes = [
     {path: 'walkthrough', component: WalkthroughComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'login', component :LoginComponent},
-    {path: 'create', component:CreateNoteComponent},
+    {path: 'create', component:CreateNoteComponent, canActivate: [AuthGuard]},
     {path: 'notes/:id', component:NoteComponent, canActivate: [AuthGuard]},
     {path: 'edit/:id', component:EditComponent, canActivate: [AuthGuard]},
     {path: 'notes', component:NotesComponent, canActivate: [AuthGuard]},
-    {path: 'home', component:HomeComponent},
+    {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},
     {path: 'archived', component:ArchivedComponent, canActivate: [AuthGuard]}
 
 ];
