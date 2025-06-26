@@ -1,8 +1,19 @@
 import { Injectable } from '@angular/core';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  setDoc,
+  getDoc,
+  deleteDoc,
+  docData,
+  updateDoc
+} from '@angular/fire/firestore';
+import { addDoc } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 import { Note } from '../models/note';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, throwError, retry } from 'rxjs';
-import { environment } from '../../environments/environment.prod';
+
 import { ErrorService } from './error.service';
 
 @Injectable({
@@ -10,69 +21,41 @@ import { ErrorService } from './error.service';
 })
 export class CrudServiceService {
 
-  private baseUrl = environment.apiBaseUrl;
+ 
 
-  constructor(private http: HttpClient, private errorHandler: ErrorService) {}
+ constructor(private firestore: Firestore) {}
 
- getNotes(tag: string = 'All', searchTerm: string = ''): Observable<Note[]> {
-    let url = `${this.baseUrl}/notes`;
-    let params = new URLSearchParams();
-    if (tag !== 'All') {
-      params.set('tag', tag);
-    }
-    if (searchTerm !== '') {
-      params.set('searchTerm', searchTerm);
-    }
-    if (params.toString()) {
-      url += `?${params.toString()}`;
-    }
-    return this.http.get<Note[]>(url)
-      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
-;
-  }
 
-  addNote(note: Partial<Note>): Observable<Note> {
-  return this.http.post<Note>(`${this.baseUrl}/notes`, note)
-    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+ // 🟢 Get all notes
+getNotes(): Observable<Note[]> {
+  const notesRef = collection(this.firestore, 'notes');
+  return collectionData(notesRef, { idField: 'id' }) as Observable<Note[]>;
 }
 
-
-
-  getNote(id: number): Observable<Note> {
-  return this.http.get<Note>(`${this.baseUrl}/notes/${id}`)
-    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+// 🟢 Get a single note
+getNote(id: string): Observable<Note> {
+  const noteDoc = doc(this.firestore, `notes/${id}`);
+  return docData(noteDoc, { idField: 'id' }) as Observable<Note>;
 }
 
-  createPost(post: Partial<Comment>): Observable<Comment> {
-    return this.http.post<Comment>(`${this.baseUrl}/posts`, post)
-      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
-;
-  }
-
-  updateNote(id: number, post: Partial<Note>): Observable<Note> {
-  return this.http.put<Note>(`${this.baseUrl}/notes/${id}`, post)
-    .pipe(retry(1), catchError(error => this.errorHandler.handle(error)));
+// 🟢 Add a note
+addNote(note: Partial<Note>): Promise<any> {
+  const notesRef = collection(this.firestore, 'notes');
+  return addDoc(notesRef, note);
 }
 
-  deleteNote(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/notes/${id}`)
-      .pipe(retry(1), catchError(error => this.errorHandler.handle(error)))
-;
-  }
-  
-signIn(email: string, password: string): Observable<any> {
-  return this.http.post<any>(`${this.baseUrl}/users`, { email, password })
-    .pipe(
-      retry(1),
-      catchError((error) => this.errorHandler.handle(error))
-    );
+// 🟢 Update a note
+updateNote(id: string, note: Partial<Note>): Promise<void> {
+  const noteDoc = doc(this.firestore, `notes/${id}`);
+  return updateDoc(noteDoc, note);
 }
 
-
-signUp(username: string, email: string, password: string): Observable<any> {
-  return this.http.post<any>(`${this.baseUrl}/users/signup`, { username, email, password })
-    .pipe(retry(1), catchError((error) => this.errorHandler.handle(error)));
+// 🟢 Delete a note
+deleteNote(id: string): Promise<void> {
+  const noteDoc = doc(this.firestore, `notes/${id}`);
+  return deleteDoc(noteDoc);
 }
+
 
 logout(): void {
   localStorage.removeItem('token');

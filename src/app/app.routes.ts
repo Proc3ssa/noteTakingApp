@@ -5,7 +5,7 @@ import { SplashscreenComponent } from './pages/splashscreen/splashscreen.compone
 import { WalkthroughComponent } from './pages/walkthrough/walkthrough.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
-import { CreateComponent } from './pages/create/create.component';
+import { CreateNoteComponent } from './pages/create/create.component';
 import { NoteComponent } from './pages/note/note.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -18,7 +18,7 @@ export const routes: Routes = [
     {path: 'walkthrough', component: WalkthroughComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'login', component :LoginComponent},
-    {path: 'create', component:CreateComponent},
+    {path: 'create', component:CreateNoteComponent},
     {path: 'notes/:id', component:NoteComponent, canActivate: [AuthGuard]},
     {path: 'edit/:id', component:EditComponent, canActivate: [AuthGuard]},
     {path: 'notes', component:NotesComponent, canActivate: [AuthGuard]},

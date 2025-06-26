@@ -1,66 +1,46 @@
 import { Component } from '@angular/core';
-import { CrudServiceService } from '../../services/crud-service.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-signup',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
-  imports: [FormsModule, CommonModule]
+  styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
   username = '';
   email = '';
   password = '';
   confirmPassword = '';
-
-  successMessage = '';
   errorMessage = '';
+  successMessage = '';
 
-  constructor(private crudService: CrudServiceService, private router : Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit(): void {
-  if (!this.username || !this.email || !this.password || !this.confirmPassword) {
-    this.errorMessage = 'Please fill in all fields.';
-    this.successMessage = '';
-    return;
-  }
+  signUp(): void {
+  this.errorMessage = '';
+  this.successMessage = '';
 
   if (this.password !== this.confirmPassword) {
     this.errorMessage = 'Passwords do not match.';
-    this.successMessage = '';
     return;
   }
 
-  this.crudService.signUp(this.username, this.email, this.password).subscribe({
-    next: (res) => {
+  this.authService.signUp(this.email, this.password).subscribe({
+    next: (user) => {
+      console.log('✅ Signup Success:', user); // DEBUG
       this.successMessage = 'Signup successful!';
-      this.errorMessage = '';
-      
-  
-      if (res?.token) {
-        localStorage.setItem('authToken', res.token);
-      }
-
-      // Reset fields
-      this.username = '';
-      this.email = '';
-      this.password = '';
-      this.confirmPassword = '';
-
-      sleep(2);
       this.router.navigate(['/login']);
     },
     error: (err) => {
-      this.errorMessage = err?.error?.error || 'Signup failed.';
-      this.successMessage = '';
+      console.error('❌ Signup Error:', err); // DEBUG
+      this.errorMessage = err?.message || 'Signup failed.';
     }
   });
 }
 
 }
-function sleep(seconds: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, seconds * 1000));
-}
-

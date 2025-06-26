@@ -1,6 +1,8 @@
 <section class="create">
     <h1>Add new note</h1>
     <p>{{day}}</p>
+    <p *ngIf="loading" class="loading">Creating note...</p>
+
     <form action=""  #noteForm="ngForm" (submit)="submit()">
 
          <div class="tags">

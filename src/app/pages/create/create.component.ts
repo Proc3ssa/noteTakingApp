@@ -1,69 +1,61 @@
-import { Component } from '@angular/core';
-import { CrudServiceService } from '../../services/crud-service.service';
-import { Note } from '../../models/note';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterLink, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NoteService } from '../../services/note.service';
+
 @Component({
-  selector: 'app-create',
-  imports: [FormsModule, CommonModule, RouterLink],
+  selector: 'app-create-note',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss'
 })
-export class CreateComponent {
+export class CreateNoteComponent implements OnInit {
+  title = '';
+  content = '';
+  tag = 'All';
+  day = '';
+  
+  constructor(private noteService: NoteService, private router: Router) {}
 
-  id = Math.floor(Math.random() * 1000000);
-
-  date = new Date();
-  day = this.date.toLocaleString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }); 
-
-  data: Note = {
-    id: 0,
-    title: '',
-    content: '',
-    tag: '',
-    isArchived: false,
-    createdAt: this.day
-  }; 
-
-  title: string = '';
-  content: string = '';
-  tag: string = '';
-
-  constructor(private crudservice: CrudServiceService, private router: Router) {}
-
-  cancel() {
-    this.router.navigate(['/notes']);
+  ngOnInit(): void {
+    const today = new Date();
+    this.day = today.toLocaleDateString(undefined, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   }
 
-  
+loading = false;
 
-  submit(){
+submit(): void {
+  if (!this.title.trim() || !this.content.trim()) return;
 
-    if (!this.title || !this.content || !this.tag) return;
+  const note = {
+    title: this.title.trim(),
+    content: this.content.trim(),
+    tag: this.tag,
+    isArchived: this.tag === 'Archived',
+    createdAt: new Date().toISOString()
+  };
 
-    this.data = {
-      id: this.id,
-      title: this.title,
-      content: this.content,
-      tag: this.tag,
-      isArchived: false,
-      createdAt: this.day
-    };
-
-
-    this.crudservice.addNote(this.data).subscribe({
-    next: (res) => {
-     alert('New note added')
-    },
-    error: (err) => {
-      alert("error adding new post");
-    }
-  });
-
-
+  this.noteService.addNote(note)
+    .then(() => {
+      alert('✅ Note created successfully');
+      this.router.navigate(['/notes']);
+    })
+    .catch((err) => {
+      console.error('❌ Failed to add note:', err);
+      alert('❌ Error creating note');
+    });
 }
- 
 
+
+
+  cancel(): void {
+    this.router.navigate(['/notes']);
+  }
 }

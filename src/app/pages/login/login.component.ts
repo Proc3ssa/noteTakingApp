@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CrudServiceService } from '../../services/crud-service.service';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,10 +14,12 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
+  successMessage: string = '';
+  loading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private crudService: CrudServiceService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -26,32 +28,32 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(): void {
-  this.errorMessage = '';
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.loading = true;
 
-  if (this.loginForm.valid) {
-    const { email, password } = this.loginForm.value;
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
 
-    this.crudService.signIn(email, password).subscribe({
-    next: (response: any) => {
-  if (response.token) {
-    localStorage.setItem('token', response.token);
-    this.router.navigate(['/notes']);
-  } else {
-    this.errorMessage = 'Invalid server response.';
+      this.authService.login(email, password).subscribe({
+        next: (user) => {
+          this.successMessage = 'Login successful!';
+          localStorage.setItem('token', 'firebase-auth-token');
+          this.loading = false;
+
+          setTimeout(() => this.router.navigate(['/home']), 1000);
+        },
+        error: (err) => {
+          this.loading = false;
+          this.errorMessage = err?.message || 'Login failed. Please try again.';
+        }
+      });
+    } else {
+      this.loading = false;
+      this.errorMessage = 'Please fill out the form.';
+    }
   }
-},
-
-      error: (err: any) => {
-        this.errorMessage = err?.error?.error || 'Login failed. Please try again.';
-      }
-    });
-  } else {
-    this.errorMessage = 'Please fill out the form';
-  }
-}
-
 }
