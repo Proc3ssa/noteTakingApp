@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     next: (response: any) => {
   if (response.token) {
     localStorage.setItem('token', response.token);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/notes']);
   } else {
     this.errorMessage = 'Invalid server response.';
   }
