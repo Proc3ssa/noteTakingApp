@@ -10,6 +10,7 @@ import { NoteComponent } from './pages/note/note.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ArchivedComponent } from './pages/archived/archived.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 export const routes: Routes = [
     {path: '', component: SplashscreenComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     {path: 'login', component :LoginComponent},
     {path: 'create', component:CreateComponent},
     {path: 'notes/:id', component:NoteComponent},
+    {path: 'edit/:id', component:EditComponent},
     {path: 'notes', component:NotesComponent},
     {path: 'home', component:HomeComponent},
     {path: 'archived', component:ArchivedComponent}

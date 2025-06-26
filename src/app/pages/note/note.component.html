@@ -1,16 +1,18 @@
 <section class="note">
-    <h1>Note heading</h1>
+    <h1>{{note.title}}</h1>
 
     <div class="not-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae rerum atque consectetur suscipit provident, consequatur fuga unde enim aliquam corporis quos quaerat, temporibus incidunt molestias officiis ducimus, eligendi molestiae laborum culpa! Sed, necessitatibus expedita! Excepturi odit ex, itaque, laboriosam ut aspernatur veniam modi temporibus totam consequatur amet. Soluta laborum perspiciatis ad corporis accusamus atque adipisci quia sint deserunt in similique ducimus animi fugiat voluptatem, velit molestiae cum doloremque hic eos vel rem veniam. Facere, officia. Nam commodi doloremque necessitatibus provident eligendi at possimus, error nobis minus ipsa minima, ad asperiores eos ratione molestiae, expedita impedit nulla dolorum quae ex labore?
+       {{note.content}}
     </div>
 
     <div class="control">
         <div class="buttons">
-        <button>Edit</button>
-        <button style="background-color: gray; color:white">Add to archive</button>
+        <button [routerLink]="['/edit', note.id]">Edit</button>
+        <button (click)="toggleArchive()" style="background-color: gray; color:white">{{buttonCont}}</button>
+        <button (click)="deleteNote()" style="background-color: red; color:white">Delete</button>
+
 
         </div>
-        <p>Created at: <span>12-12-90</span></p>
+        <p>Created at: <span>{{note.createdAt}}</span></p>
     </div>
 </section>        

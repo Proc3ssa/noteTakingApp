@@ -1,30 +1,32 @@
 <section class="signup">
 
+
+<div class="logo">
+    <img src="assets/images/Black.png" alt="logo">
+</div>
+
     <p class="head">Login</p>
 
-    <form action="">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-       
-
-
-        <div class="singleinput">
-           <label for="">Email</label>
-         
-           <input type="email" name="" id="">
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
         </div>
 
         <div class="singleinput">
-           <label for="">Password</label>
-         
-           <input type="password" name="" id="">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email">
         </div>
 
-       
+        <div class="singleinput">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password">
+        </div>
 
         <p><span>Forgot password?</span></p>
 
         <div class="button">
-            <button>Login</button>
+            <button type="submit">Login</button>
         </div>
     </form>
 

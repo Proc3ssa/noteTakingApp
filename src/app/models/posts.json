@@ -1,0 +1,101 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "title": "First Post",
+      "content": "This is the content of the first post.",
+      "isArchived": true,
+      "createdAt": "2024-01-01T12:00:00Z"
+    },
+    {
+      "id": "3",
+      "title": "Third Post",
+      "content": "This is the content of the third post.",
+      "tag": "Work",
+      "isArchived": false,
+      "createdAt": "2024-01-03T16:45:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Fourth Post",
+      "content": "This is the content of the fourth post.",
+      "tag": "Work",
+      "isArchived": false,
+      "createdAt": "2024-01-04T18:00:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Fifth Post",
+      "content": "This is the content of the fifth post.",
+      "tag": "Work",
+      "isArchived": true,
+      "createdAt": "2024-01-05T20:15:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Sixth Post",
+      "content": "This is the content of the sixth post.",
+      "tag": "Work",
+      "isArchived": false,
+      "createdAt": "2024-01-06T22:30:00Z"
+    },
+    {
+      "id": "564492",
+      "title": "test title",
+      "content": "test body",
+      "tag": "Academic",
+      "isArchived": false,
+      "createdAt": "Jun 24, 2025"
+    },
+    {
+      "id": "8989",
+      "title": "wwwwwwwwwwwwwwwwwwwwwww",
+      "content": "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+      "tag": "Work",
+      "isArchived": false,
+      "createdAt": "Jun 24, 2025"
+    },
+    {
+      "id": "168214",
+      "title": "Academic test",
+      "content": ".jbK FKDjbcIA:bf JADNVoisDHFNLAJKSBDVKhjz X",
+      "tag": "Academic",
+      "isArchived": false,
+      "createdAt": "Jun 24, 2025"
+    },
+    {
+      "id": "168214",
+      "title": "Academic test",
+      "content": ".jbK FKDjbcIA:bf JADNVoisDHFNLAJKSBDVKhjz X",
+      "tag": "Academic",
+      "isArchived": false,
+      "createdAt": "Jun 24, 2025"
+    },
+    {
+      "id": "493031",
+      "title": "click",
+      "content": "gdgdtsvsagafafafaa\n",
+      "tag": "Archived",
+      "isArchived": false,
+      "createdAt": "Jun 24, 2025"
+    },
+    {
+      "id": 817120,
+      "title": "Archived title",
+      "content": "archived mody wasssssssssssssssssss",
+      "tag": "Archived",
+      "isArchived": false,
+      "createdAt": "Jun 25, 2025"
+    }
+  ],
+  "users": [
+    {
+      "username": "Faisal",
+      "email": "processor@gmail.com",
+      "password": "11111",
+      "token": "shhhh",
+      "id": "e2e0"
+    }
+    
+  ]
+}

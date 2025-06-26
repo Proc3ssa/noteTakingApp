@@ -7,12 +7,29 @@
 *{
      box-sizing: border-box;
 }
+body.light-theme {
+  --bg-color: #f4f4fb;
+  --text-color: #000000;
+  --card-bg:white;
+}
+
+body.dark-theme {
+  --bg-color: #1e1e1ef2;
+  --text-color: #f5f5f5;
+  --card-bg : rgba(23, 22, 22, 0.885);
+}
+
+body.custom-theme {
+  --bg-color: var(--custom-bg, #bbd2ed);
+  --text-color: var(--custom-text, #006064);
+}
 
 body{
      max-width: 1440px;
      width: 100%;
      margin-inline: auto;
-     background-color: rgb(238, 237, 242);
+     background-color: var(--bg-color);
+     color: var(--text-color);
      font-family: 'Nunito', sans-serif;
      cursor: pointer;
 

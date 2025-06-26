@@ -1,6 +1,6 @@
 <section class="home">
 
-  <div *ngIf="showModal" class="setTheme">
+  <div  class="setTheme">
    <button (click)="closeModalHandler()">close</button>
   </div>
       
@@ -9,21 +9,23 @@
     </div>
 
     <div class="main">
-        
+        <p *ngIf="error">error loading {{error}}</p>
         <header>
             <h1>Notes</h1>
 
             <div class="filter-search">
                 <div class="filter">
                     <label for="">filter by</label>
-                    <select name="" id="">
-                    
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
+                    <select name="" id="" (change)="onCategoryChange($event)">
+
+                    <option value="All">All</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Work">Work</option>
+                    <option value="Others">Others</option>
+
                 </select></div>
                 <div class="search">
-                    <input type="search" placeholder="search"> <img src="assets/images/lense.png" alt="lense">
+                    <input type="search" placeholder="search" (input)="searchNotes($event)"> <img src="assets/images/lense.png" alt="lense">
                 </div>
             </div>
         </header>
@@ -31,50 +33,17 @@
 
         <div class="notes">
 
-            <div class="noteCard">
-
-                <h1>Topic</h1>
-
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
+          <app-notecard *ngFor="let note of notes | filter:searchTerm as filteredNotes" [note]="note"></app-notecard>
+          <p *ngIf="(notes | filter:searchTerm).length === 0">No notes found.</p>
 
 
-             <div class="noteCard">
-
-                <h1>Topic</h1>
-
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
+            
 
 
+           
 
-             <div class="noteCard">
 
-                <h1>Topic</h1>
-
-                <div class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit...
-
-                </div>
-
-                <div class="controls">
-                    <p>type</p>
-                </div>
-
-            </div>
+            
 
 
            
@@ -82,7 +51,7 @@
         </div>
 
         <div class="addNotes">
-          <button class="button">+ Add new note</button>
+          <button class="button" routerLink="/create">+ Add new note</button>
         </div>
 
 
@@ -92,3 +61,28 @@
    
 
 </section>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModalHandler()">&times;</span>
+    <h2>Settings</h2>
+    
+    <h3>Theme Change</h3>
+
+    <div class="buttons">
+      <button (click)="themeChange('light')">Light</button>
+      <button (click)="themeChange('dark')" style="background-color: rgb(44, 44, 44); color:white">Dark</button>
+       
+      <label for="color">Custom</label>
+      <input type="color" name="" id="color" (input)="onCustomColorChange($event)">
+    </div>
+
+
+    <div class="user">
+      <h3>User</h3>
+
+      <button style="background-color: rgb(225, 78, 78); color:white">logout</button>
+    </div>
+
+  </div>
+</div>
