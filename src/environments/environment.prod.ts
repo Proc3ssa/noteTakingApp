@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:666/api'
+  
+  apiBaseUrl: 'https://mybackendapi.rf.gd/api/'
 };
