@@ -74,4 +74,10 @@ signUp(username: string, email: string, password: string): Observable<any> {
     .pipe(retry(1), catchError((error) => this.errorHandler.handle(error)));
 }
 
+logout(): void {
+  localStorage.removeItem('token');
+  
+}
+
+
 }

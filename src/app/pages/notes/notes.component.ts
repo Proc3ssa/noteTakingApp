@@ -6,6 +6,7 @@ import { CrudServiceService } from '../../services/crud-service.service';
 import { NotecardComponent } from '../../components/notecard/notecard.component';
 import { RouterLink } from '@angular/router';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-notes',
   imports: [SidebarComponent, CommonModule, NotecardComponent, RouterLink, FilterPipe ],
@@ -14,7 +15,8 @@ import { FilterPipe } from '../../pipes/filter.pipe';
 })
 export class NotesComponent implements OnInit{
   constructor(
-    private crudservice: CrudServiceService
+    private crudservice: CrudServiceService,
+    private router: Router
   ){}
   ngOnInit(): void {
     this.loadNotes();
@@ -112,5 +114,9 @@ onCustomColorChange(event: Event) {
   this.themeChange('custom');
 }
 
+logout(): void {
+    this.crudservice.logout();
+    this.router.navigate(['/login']);
+  }
 
 }
