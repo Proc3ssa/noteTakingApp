@@ -62,7 +62,10 @@ export class NotesComponent implements OnInit {
   }
 
   themeChange(mode: string): void {
-    document.body.setAttribute('data-theme', mode);
+    // Remove existing theme classes
+    document.body.classList.remove('light-theme', 'dark-theme', 'custom-theme');
+    // Add the new theme class
+    document.body.classList.add(mode);
   }
 
   onCustomColorChange(event: Event): void {
