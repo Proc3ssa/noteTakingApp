@@ -42,7 +42,6 @@ export class SignupComponent {
       this.router.navigate(['/login']);
     },
     error: (err) => {
-      console.error('❌ Signup Error:', err); // DEBUG
       this.errorMessage = err?.message || 'Signup failed.';
     }
   });
