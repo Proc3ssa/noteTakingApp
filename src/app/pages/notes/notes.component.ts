@@ -70,7 +70,11 @@ export class NotesComponent implements OnInit {
 
   onCustomColorChange(event: Event): void {
     const color = (event.target as HTMLInputElement).value;
-    document.documentElement.style.setProperty('--custom-color', color);
+    // Set the custom theme CSS variables
+    document.documentElement.style.setProperty('--custom-bg', color);
+    document.documentElement.style.setProperty('--custom-text', color);
+    // Apply the custom theme
+    this.themeChange('custom-theme');
   }
 
   logout(): void {
