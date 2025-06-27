@@ -26,31 +26,31 @@ export class CrudServiceService {
  constructor(private firestore: Firestore) {}
 
 
- // 🟢 Get all notes
+ // Get all notes
 getNotes(): Observable<Note[]> {
   const notesRef = collection(this.firestore, 'notes');
   return collectionData(notesRef, { idField: 'id' }) as Observable<Note[]>;
 }
 
-// 🟢 Get a single note
+// Get a single note
 getNote(id: string): Observable<Note> {
   const noteDoc = doc(this.firestore, `notes/${id}`);
   return docData(noteDoc, { idField: 'id' }) as Observable<Note>;
 }
 
-// 🟢 Add a note
+// Add a note
 addNote(note: Partial<Note>): Promise<any> {
   const notesRef = collection(this.firestore, 'notes');
   return addDoc(notesRef, note);
 }
 
-// 🟢 Update a note
+// Update a note
 updateNote(id: string, note: Partial<Note>): Promise<void> {
   const noteDoc = doc(this.firestore, `notes/${id}`);
   return updateDoc(noteDoc, note);
 }
 
-// 🟢 Delete a note
+// Delete a note
 deleteNote(id: string): Promise<void> {
   const noteDoc = doc(this.firestore, `notes/${id}`);
   return deleteDoc(noteDoc);

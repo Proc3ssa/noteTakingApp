@@ -1,24 +1,24 @@
 <?php
-// 🌐 GLOBAL HEADERS — Allow CORS
+// GLOBAL HEADERS — Allow CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Content-Type: application/json");
 
-// ⚙️ Preflight check for OPTIONS requests
+// Preflight check for OPTIONS requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
-// 🧭 Parse the route
+// Parse the route
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', trim($uri, '/')); // ['api', 'notes', '4']
 
 $resource = $uri[1] ?? null; // 'notes'
 $id = $uri[2] ?? null;
 
-// 🔁 RESTful routing
+// RESTful routing
 switch ($resource) {
     case 'notes':
         switch ($_SERVER['REQUEST_METHOD']) {

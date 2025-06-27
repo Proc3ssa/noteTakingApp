@@ -10,7 +10,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { ToastrModule } from 'ngx-toastr'; // ✅ Add this
+import { ToastrModule } from 'ngx-toastr'; // Add this
 import { environment } from './environments/environment.prod';
 
 bootstrapApplication(AppComponent, {
@@ -19,13 +19,13 @@ bootstrapApplication(AppComponent, {
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideAnimations(), // ✅ Required for Toastr
+    provideAnimations(), // Required for Toastr
     importProvidersFrom(
       ToastrModule.forRoot({
         positionClass: 'toast-bottom-right',
         timeOut: 3000,
         preventDuplicates: true
       })
-    ) // ✅ Add ToastrModule globally
+    ) // Add ToastrModule globally
   ]
 }).catch(err => console.error(err));
