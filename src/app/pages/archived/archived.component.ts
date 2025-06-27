@@ -4,6 +4,7 @@ import { NotecardComponent } from '../../components/notecard/notecard.component'
 import { Note } from '../../models/note';
 import { NoteService } from '../../services/note.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-archived',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class ArchivedComponent implements OnInit {
   notes: Note[] = [];
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService, private router: Router) {}
 
   showModal = false;
 
@@ -40,7 +41,7 @@ export class ArchivedComponent implements OnInit {
         }
       }
     } else {
-      // Apply default theme if no preference is found
+      // Apply default theme
       this.themeChange('light-theme');
     }
 
@@ -88,6 +89,6 @@ onCustomColorChange(event: Event): void {
 
   logout(): void {
     localStorage.removeItem('token');
-    window.location.href = '/login'; // Or use router.navigate
+    this.router.navigate(['/login']);
   }
 }

@@ -6,6 +6,7 @@ import { NotecardComponent } from '../../components/notecard/notecard.component'
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notes',
@@ -21,7 +22,7 @@ export class NotesComponent implements OnInit {
   error: string = '';
   showModal = false;
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService, private router: Router) {}
 
   ngOnInit(): void {
     // Load theme preference from localStorage
@@ -39,7 +40,7 @@ export class NotesComponent implements OnInit {
         }
       }
     } else {
-      // Apply default theme if no preference is found
+      // Apply default theme
       this.themeChange('light-theme');
     }
 
@@ -103,6 +104,7 @@ onCustomColorChange(event: Event): void {
 
   logout(): void {
     localStorage.removeItem('token');
-    window.location.href = '/login'; // Or use router.navigate
+        this.router.navigate(['/login']);
+
   }
 }
