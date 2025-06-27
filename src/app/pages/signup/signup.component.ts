@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent {
   errorMessage = '';
   successMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toaster :ToastrService) {}
 
   signUp(): void {
   this.errorMessage = '';
@@ -32,8 +33,12 @@ export class SignupComponent {
 
   this.authService.signUp(this.email, this.password).subscribe({
     next: (user) => {
-      console.log('✅ Signup Success:', user); // DEBUG
-      this.successMessage = 'Signup successful!';
+      this.toaster.success("Sign up sucessdfully");
+      this.successMessage = '';
+
+       setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1500);
       this.router.navigate(['/login']);
     },
     error: (err) => {
