@@ -39,3 +39,28 @@
      
   
   </section>
+
+  <div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModalHandler()">&times;</span>
+    <h2>Settings</h2>
+    
+    <h3>Theme Change</h3>
+
+    <div class="buttons">
+      <button (click)="themeChange('light')">Light</button>
+      <button (click)="themeChange('dark')" style="background-color: rgb(44, 44, 44); color:white">Dark</button>
+       
+      <label for="color">Custom</label>
+      <input type="color" name="" id="color" (input)="onCustomColorChange($event)">
+    </div>
+
+
+    <div class="user">
+      <h3>User</h3>
+
+      <button style="background-color: rgb(225, 78, 78); color:white" (click)="logout()">logout</button>
+    </div>
+
+  </div>
+</div>

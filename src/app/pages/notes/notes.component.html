@@ -36,18 +36,6 @@
           <app-notecard *ngFor="let note of notes | filter:searchTerm as filteredNotes" [note]="note"></app-notecard>
           <p *ngIf="(notes | filter:searchTerm).length === 0">No notes found.</p>
 
-
-            
-
-
-           
-
-
-            
-
-
-           
-
         </div>
 
         <div class="addNotes">

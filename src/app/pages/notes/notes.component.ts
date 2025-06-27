@@ -24,6 +24,25 @@ export class NotesComponent implements OnInit {
   constructor(private noteService: NoteService) {}
 
   ngOnInit(): void {
+    // Load theme preference from localStorage
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+      this.themeChange(savedTheme);
+      if (savedTheme === 'custom-theme') {
+        const customBg = localStorage.getItem('customBgColor');
+        const customText = localStorage.getItem('customTextColor');
+        if (customBg) {
+          document.documentElement.style.setProperty('--custom-bg', customBg);
+        }
+        if (customText) {
+          document.documentElement.style.setProperty('--custom-text', customText);
+        }
+      }
+    } else {
+      // Apply default theme if no preference is found
+      this.themeChange('light-theme');
+    }
+
     this.noteService.getNotes().subscribe({
       next: (data) => {
         this.notes = data;
@@ -66,16 +85,21 @@ export class NotesComponent implements OnInit {
     document.body.classList.remove('light-theme', 'dark-theme', 'custom-theme');
     // Add the new theme class
     document.body.classList.add(mode);
+    // Save the theme preference
+    localStorage.setItem('selectedTheme', mode);
   }
+onCustomColorChange(event: Event): void {
+  const color = (event.target as HTMLInputElement).value;
+  // Set the custom theme CSS variables
+  document.documentElement.style.setProperty('--custom-bg', color);
+  document.documentElement.style.setProperty('--custom-text', color);
+  // Apply the custom theme
+  this.themeChange('custom-theme');
+  // Save custom theme preferences
+  localStorage.setItem('customBgColor', color);
+  localStorage.setItem('customTextColor', color);
+}
 
-  onCustomColorChange(event: Event): void {
-    const color = (event.target as HTMLInputElement).value;
-    // Set the custom theme CSS variables
-    document.documentElement.style.setProperty('--custom-bg', color);
-    document.documentElement.style.setProperty('--custom-text', color);
-    // Apply the custom theme
-    this.themeChange('custom-theme');
-  }
 
   logout(): void {
     localStorage.removeItem('token');
